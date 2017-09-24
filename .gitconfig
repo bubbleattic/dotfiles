@@ -1,0 +1,13 @@
+[user]
+	name = bubbleattic
+	email = 28359531+bubbleattic@users.noreply.github.com
+[core]
+	editor = vim
+    whitespace = off
+    excludesfile = ~/.gitignore
+[advice]
+    statusuoption = false
+[color]
+    ui = true
+[push]
+    default = current
