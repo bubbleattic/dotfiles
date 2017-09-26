@@ -1,0 +1,4 @@
+call plug#begin('~/.vim/plugged')
+Plug 'godlygeek/tabular'
+call plug#end()
+

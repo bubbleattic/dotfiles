@@ -11,4 +11,4 @@ alias mysqldump="mysqldump --user=$C9_USER --host=$IP"
 alias php="php -c ~/workspace/php.ini"
 alias ..="cd .."
 
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:~/workspace/bin:$PATH

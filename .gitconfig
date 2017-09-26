@@ -1,8 +1,8 @@
 [user]
-	name = bubbleattic
-	email = 28359531+bubbleattic@users.noreply.github.com
+    name = bubbleattic
+    email = 28359531+bubbleattic@users.noreply.github.com
 [core]
-	editor = vim
+    editor = vim
     whitespace = off
     excludesfile = ~/.gitignore
 [advice]
