@@ -16,5 +16,13 @@ Plug 'LucHermitte/mu-template'
 Plug 'tomtom/stakeholders_vim'
 Plug 'LucHermitte/alternate-lite'
 Plug 'LucHermitte/lh-cpp'
+Plug 'vhdirk/vim-cmake'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'bling/vim-bufferline'
 call plug#end()
 

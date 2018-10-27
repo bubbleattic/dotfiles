@@ -38,3 +38,23 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
   \ --ignore "**/*.pyc"
   \ --ignore build
   \ -g ""'
+let g:cmake_cxx_compiler = '/usr/bin/clang++'
+let g:cmake_c_compiler = '/usr/bin/clang'
+let g:cmake_project_generator = 'Ninja'
+let g:cmake_export_compile_commands = 1
+"let g:airline_theme='one'
+"colorscheme one
+"set background=light
+"set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
+set background=light
+colorscheme PaperColor
+command Ninja ! cd build && ninja
+command CMNinja ! cd build && cmake -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G Ninja ..
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --ignore .git --ignore build --ignore "**/*.pyc"'
+endif
