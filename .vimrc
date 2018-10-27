@@ -46,3 +46,6 @@ hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --ignore .git --ignore build --ignore "**/*.pyc"'
 endif
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
