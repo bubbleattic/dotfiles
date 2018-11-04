@@ -1,51 +1,59 @@
-set tabstop=4
-
+" Load Plugins
 so ~/.vimpluginit
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
+" Tab config
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
+autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" YouCompleteMe Config
+nnoremap <leader>gg :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gh :YcmCompleter GoToImplementationElseDeclaration<CR>
 
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
+" Nerdtree config
 map <C-n> :NERDTreeToggle<CR>
-source $VIMRUNTIME/mswin.vim
-behave mswin
-set keymodel-=stopsel
-let g:usemarks = 0
+let NERDTreeIgnore = ['\.pyc$', '.egg-info$', 'build', 'dist', '__pycache__', 'compile_commands.json']
+
+" ALE Config
+let g:ale_linters = {
+\   'cpp': ['clangcheck', 'clangtidy', 'cppcheck'],
+\}
+
+" Tagbar
 nmap <F8> :TagbarToggle<CR>
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-  \ --ignore .git
-  \ --ignore .svn
-  \ --ignore .hg
-  \ --ignore .DS_Store
-  \ --ignore "**/*.pyc"
-  \ --ignore build
-  \ -g ""'
-set background=light
+
+" FSwitch
+au! BufEnter *.cpp,*.cxx,*.cc let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+au! BufEnter *.h,*.hpp let b:fswitchdst = 'cpp,cxx,cc' | let b:fswitchlocs = '.'
+nmap <silent> <Leader>of :FSHere<cr>
+nmap <silent> <Leader>ok :FSAbove<cr>
+nmap <silent> <Leader>oj :FSBelow<cr>
+
+" Color scheme config
+set background=dark
 colorscheme PaperColor
-command Ninja ! cd build && ninja
-command CMNinja ! cd build && cmake -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G Ninja ..
-hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --ignore .git --ignore build --ignore "**/*.pyc"'
+syntax enable
+if has('gui_running')
+	"colorscheme solarized
+	set background=light
 endif
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Custom build commands
+command Ninja ! ninja -C build
+command CMNinja ! cd build && cmake -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G Ninja ..
+let &makeprg = "ninja -C build"
+
+" Configure ack to use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --ignore .git --ignore build --ignore "**/*.pyc" --ignore __pycache__ --ignore dist --ignore "**/*.egg-info" --ignore compile_commands.json'
+endif
+
+" Clipbard/mouse/etc.
+set number
+set mouse=a
+set clipboard=unnamedplus
+
+set exrc
+set secure
