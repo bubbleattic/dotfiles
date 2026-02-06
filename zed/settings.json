@@ -1,0 +1,55 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "terminal": {
+    "dock": "right"
+  },
+  "vim": {
+    "use_system_clipboard": "never",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Ayu Dark",
+  },
+  "features": {
+    "edit_prediction_provider": "copilot",
+  },
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TSX": {
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "format_on_save": "on",
+    },
+  },
+}
