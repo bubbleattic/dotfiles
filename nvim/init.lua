@@ -9,6 +9,7 @@ vim.o.tabstop = 4
 vim.o.swapfile = false
 vim.o.writebackup = false
 vim.o.undofile = true
+vim.o.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
 vim.o.mouse = "a"
@@ -360,6 +361,11 @@ require("lazy").setup({
 	},
 	{
 		"vim-airline/vim-airline",
+		config = function()
+			if vim.env.SSH_CONNECTION then
+				vim.g.airline_section_b = vim.fn.hostname() .. " (SSH)"
+			end
+		end,
 	},
 })
 
